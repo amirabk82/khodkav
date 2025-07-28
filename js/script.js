@@ -80,7 +80,7 @@ $(document).ready(function(){
 // hero
   ScrollReveal().reveal('.hero', {origin: "bottom"});
 
-  ScrollReveal().reveal('.section-title', duration: "1500");
+  ScrollReveal().reveal('.section-title', {duration: "1500"});
   ScrollReveal().reveal('.benefit-item', {delay: 200, interval: 100});
 
   // services
