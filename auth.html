@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خودکاو</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" /> -->
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" />
+
+</head>
+
+<body class="authPage">
+
+    <!-- loading -->
+
+    <div id="loader" class="gap-1">
+        <div class="spinner"></div>
+        <span class="loader-text">درحال بارگذاری...</span>
+    </div>
+    <!-- end loading -->
+
+
+
+
+
+    <div class="form-container auth">
+        <div class="tab-header">
+            <button id="loginTab" class="active" onclick="showForm('login')">ورود</button>
+            <button id="registerTab" class="" onclick="showForm('register')">ثبت‌نام</button>
+        </div>
+
+        <form method="post" id="loginForm" class="form active">
+            <input type="text" name="log_username" placeholder="نام کاربری" required>
+            <input type="password" name="log_password" placeholder="رمز عبور" required>
+            <button type="submit" name="login_submit">ورود</button>
+        </form>
+
+        <form method="post" id="registerForm" class="form">
+            <input type="text" name="reg_username" placeholder="نام کاربری" required>
+            <input type="password" name="reg_password" placeholder="رمز عبور" required>
+            <button type="submit" name="register_submit">ثبت‌نام</button>
+        </form>
+    </div>
+
+
+
+
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
