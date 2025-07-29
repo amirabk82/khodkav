@@ -62,8 +62,8 @@ $(document).ready(function(){
   
   
 
-    $("ul.navbar-nav li.nav-item").click(function(){
-      $("ul.navbar-nav li.nav-item").removeClass("active");
+    $("ul.navbar-nav li.nav-item a").click(function(){
+      $("ul.navbar-nav li.nav-item a").removeClass("active");
       $(this).addClass("active");
     })
   
@@ -73,15 +73,15 @@ $(document).ready(function(){
     ScrollReveal({
       origin: "right",
       distance: '90px',
-      duration: 2000,
+      duration: 1700,
       reset: true
   });
 
 // hero
   ScrollReveal().reveal('.hero', {origin: "bottom"});
 
-  ScrollReveal().reveal('.section-title', {duration: "1500"});
-  ScrollReveal().reveal('.benefit-item', {delay: 200, interval: 100});
+  ScrollReveal().reveal('.section-title', {duration: 1200});
+  ScrollReveal().reveal('.benefit-item', {delay: 100, interval: 100});
 
   // services
   ScrollReveal().reveal('.niceGuy', {delay: 200, origin: "top"});
@@ -107,16 +107,78 @@ $(document).ready(function(){
   ScrollReveal().reveal('.accordion-item', { origin: "right", interval: 100});
 
   // footer
-  ScrollReveal().reveal('footer .title', { origin: "right", delay: 200});
-  ScrollReveal().reveal('footer .services', { origin: "top", delay: 200});
-  ScrollReveal().reveal('footer .fast', { origin: "top", delay: 200});
-  ScrollReveal().reveal('footer .logos', { origin: "left", delay: 200});
+  ScrollReveal().reveal('footer .title', { origin: "right", delay: 100});
+  ScrollReveal().reveal('footer .services', { origin: "top", delay: 100});
+  ScrollReveal().reveal('footer .fast', { origin: "top", delay: 100});
+  ScrollReveal().reveal('.logos', { origin: "left", delay: 100});
 
 // social media
-ScrollReveal().reveal('.socialMedia .icon', { origin: "bottom", interval: 200, delay: 200, distance: "100px"});
+ScrollReveal().reveal('.socialMedia .icon', { origin: "bottom", interval: 200, delay: 100, distance: "100px"});
 
 // safe
-ScrollReveal().reveal('.safe', { origin: "bottom"});
+ScrollReveal().reveal('.safe', { origin: "top"});
+
+
+
+
+ // scrollSpy
+ const currentPath = window.location.pathname;
+
+ // فقط وقتی در صفحه اصلی هستیم، کد اسکرول فعال باشه
+ if (currentPath === "/" || currentPath.endsWith("index.html")) {
+   const sections = $("section.linkedToMenu");
+   const navLinks = $("nav a");
+   let activeId = null;
+
+   const observer = new IntersectionObserver((entries) => {
+     let visibleSectionFound = false;
+
+     entries.forEach(entry => {
+       if (entry.isIntersecting) {
+         const id = entry.target.id;
+         if (activeId !== id) {
+           activeId = id;
+           navLinks.removeClass("active");
+           navLinks.filter(`[href="#${id}"]`).addClass("active");
+         }
+         visibleSectionFound = true;
+       }
+     });
+
+     // اگه هیچ سکشنی توی دید نبود → همه رو غیر فعال کن
+     if (!visibleSectionFound) {
+       navLinks.removeClass("active");
+       activeId = null;
+     }
+   }, {
+     root: null,
+     threshold: 0.4
+   });
+
+   // مشاهده همه سکشن‌ها
+   sections.each(function () {
+     observer.observe(this);
+   });
+
+   // اسکرول نرم هنگام کلیک روی منو
+   navLinks.on("click", function (e) {
+     const href = $(this).attr("href");
+     if (href.startsWith("#")) {
+       e.preventDefault();
+       $("html, body").animate({
+         scrollTop: $(href).offset().top
+       }, 500);
+     }
+   });
+ } else {
+   // اگر توی صفحه غیر از اصلی بودیم (مثل /404.html)
+   $("nav a").removeClass("active");
+   $("nav a[href='/'], nav a[href='index.html']").addClass("active");
+ }
+
+
+
+
 
   });
 
@@ -124,4 +186,7 @@ ScrollReveal().reveal('.safe', { origin: "bottom"});
 
 
 
-  
+
+
+
+

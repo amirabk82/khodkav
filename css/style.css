@@ -117,14 +117,14 @@ nav ul:not(.dropdown-menu) li > a::before{
   background-color: rgba(0, 255, 131, 1);
   height: 2px;
 }
-nav ul:not(.dropdown-menu) li.active > a::before{
+nav ul:not(.dropdown-menu) li > a.active::before{
   width: 100%;
   transition: all 0.4s ease-in-out;
 
 }
 
 /* end header */
-div.hero {
+section.hero {
   position: relative;
   margin: 40px auto;
   background: url(../images/hero-background.png);
@@ -134,7 +134,7 @@ div.hero {
   background-size: contain;
 }
 
-div.hero div {
+section.hero div {
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -145,7 +145,7 @@ div.hero div {
   top: 70px; */
 }
 
-div.hero h2 {
+section.hero h2 {
   font-weight: bold;
   font-size: 50px;
   color: #fff;
@@ -154,13 +154,13 @@ div.hero h2 {
 
 }
 
-div.hero p {
+section.hero p {
   color: #fff;
   font-weight: bold;
   font-size: 22px;
 }
 
-div.hero img.hero-character {
+section.hero img.hero-character {
   /* position: absolute;
     z-index: 1;
     left: 50px;
@@ -1129,6 +1129,15 @@ aside ul li .post-title a{
   }
   .bg-404 a{
     font-size: 16px;
+  }
+  .last-articles .item .content .title{
+    font-size: 24px;
+  }
+  .last-articles .item .content .date-box span{
+    font-size: 18px;
+  }
+  .last-articles div:nth-child(1) h3{
+    font-size: 28px;
   }
 }
 @media(max-width:576px) {
